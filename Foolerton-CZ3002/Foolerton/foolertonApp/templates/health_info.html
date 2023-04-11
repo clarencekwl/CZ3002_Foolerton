@@ -1,0 +1,120 @@
+{%load static%}
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+        <title>Health Information Page</title>
+        <link href="{% static 'css/reusable.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/health_info.css' %}" rel="stylesheet" type="text/css"/>
+    
+    
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="page_header"><a id="healthInfo_link" href="/createtasks/{{current}}">FOOLERTON</a></div>
+    
+            <div class="main_area">
+                <div class="sidebar">
+                    <div class="sidebar_wrapper">
+                        <h3>Patient:</h3>
+                        {% for ppl in people %}
+                        <p id="patient_name"><a id="patient_link" href="/healthinfo/{{ ppl.name }}">{{ppl.name}}</a></p>
+                        {%endfor%}
+                        <div class="sidebar_line"></div>
+                        <div class="sidebar_tabs">
+                            <p class="sidebar_item"><a id="tasks_link" href="http://127.0.0.1:8000/createtasks/{{current}}">Tasks</a></p>
+                            <p class="sidebar_selected"><a id="healthInfo_link" href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- for last edited info -->
+                <!-- <h4>last edited:{{det.date}}</h4> -->
+
+                <div class="main_content">
+                    <div class="topbar">
+                        <img src="{% static 'assets/bell_icon.svg' %}" id="bell_icon" />
+                        <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                            <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                            <span>{{name}}</span>
+                        </a>
+                    </div>
+                    <div class="second_layer">
+                        <div class="health_info_header">
+                            <img src="{% static 'assets/health_icon.svg' %}" />
+                            <p id="health_info_title">Health Information</p>
+                        </div>
+                        <button type="button" id="health_info_edit_btn">Edit</button>
+                    </div>
+                    <div class="main_fields">
+                        <div class="age_field">
+                            <p id="age_label">Age:</p>
+                            <span id="age_input_field">
+                                <p id="age_value">{{det.age}}</p>
+                                <span id="age_input_box"></span>
+                            </span>
+                            <p id="age_units">years old</p>
+                        </div>
+                        <div class="weight_field">
+                            <p id="weight_label">Weight:</p>
+                            <span id="weight_input_field">
+                                <p id="weight_value">{{det.weight}}</p>
+                                <span id="weight_input_box"></span>
+                            </span>                           
+                            <p id="weight_units">kg</p>
+                        </div>
+                        <div class="height_field">
+                            <p id="height_label">Height:</p>
+                            <span id="height_input_field">
+                                <p id="height_value">{{det.height}}</p>
+                                <span id="height_input_box"></span>
+                            </span>
+                            <p id="height_units">cm</p>
+                        </div>
+                        <div class="bp_field">
+                            <p id="bp_label">Blood Pressure:</p>
+                            <span id="bp_input_field">
+                                <p id="bp_value">{{det.bloodPressure}}</p>
+                                <span id="bp_input_box"></span>
+                            </span>
+                            <p id="bp_units">mmHg</p>
+                        </div>
+                        <div class="hr_field">
+                            <p id="hr_label">Heart Rate:</p>
+                            <span id="hr_input_field">
+                                <p id="hr_value">{{det.heartRate}}</p>
+                                <span id="hr_input_box"></span>
+                            </span>
+                            <p id="hr_units">bpm</p>
+                        </div>
+                        <div class="mc_field">
+                            <p id="mc_label">Medical Conditions:</p>
+                            <span id="mc_input_field">
+                                <p id="mc_value">{{det.MedicalCondition}}</p>
+                                <span id="mc_input_box"></span>
+                            </span>
+                        </div>
+                        <div class="medication_field">
+                            <p id="medication_label">Medications:</p>
+                            <span id="medication_input_field">
+                                <p id="medication_value">{{det.Medication}}</p>
+                                <span id="medication_input_box"></span>
+                            </span>
+                        </div>
+                        <div class="allergies_field">
+                            <p id="allergies_label">Allergies:</p>
+                            <span id="allergies_input_field">
+                                <p id="allergies_value">{{det.allergies}}</p>
+                                <span id="allergies_input_box"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
